@@ -26,10 +26,10 @@ jobs:
         STACKNAME=oci-ods-aqua
         STACK_FILES="ai-quick-actions/policies/terraform/*"
         RELEASE=$(cat VERSION)
-        ASSETS+="${STACKNAME}-${RELEASE}.zip"
+        ASSETS+="${STACKNAME}.zip"
         echo "::group::Processing $STACKNAME"
         zip -r ${STACKNAME}-stack.zip $STACK_FILES || { printf '\n⛔ Unable to create %s stack.\n'; exit 1;  }
-        cp ${STACKNAME}-stack.zip ${STACKNAME}-${RELEASE}.zip || { printf '\n⛔ Unable to create %s stack.\n'; exit 1;  }
+        cp ${STACKNAME}-stack.zip ${STACKNAME}.zip || { printf '\n⛔ Unable to create %s stack.\n'; exit 1;  }
         echo "::endgroup::"
         echo "::set-output name=assets::$ASSETS"
         echo "::set-output name=release::$RELEASE"
